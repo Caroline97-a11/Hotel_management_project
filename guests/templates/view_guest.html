@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-sm p-4 mb-4 border-4">
+        <h3 class="text-sm-center mb-3">Guest Details</h3>
+        <p><strong>First Name:</strong> {{ guests.first_name }}</p>
+        <p><strong>Last Name:</strong> {{ guests.last_name }}</p>
+        <p><strong>Phone Number:</strong> {{ guests.phone_number }}</p>
+        <p><strong>Email Address :</strong> {{ guests.email }}</p>
+        <p><strong>Date of Registration:</strong> {{ guests.date_registered }}</p>
+        <p><strong>Guest status:</strong> {{ guests.guest_status }}</p>
+    </div>
+    <a href="{% url 'editGuest' guests.id %}" class="btn btn-sm btn-warning">Edit</a>
+    <a href="{% url 'deleteGuest' guests.id %}" class="btn btn-sm btn-danger">Delete</a>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div>
+        <h4>Are you sure you want to delete Guest {{ guests.first_name }}?</h4>
+
+        <form method="post">
+            {% csrf_token %}
+            <button class="btn btn-danger">Yes Delete</button>
+            <a href="{% url 'guestList' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

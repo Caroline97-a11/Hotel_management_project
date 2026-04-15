@@ -14,10 +14,10 @@
   <a class="flex-sm-fill text-sm-center nav-link text-white-50 p-3 active-custom" href="#">
     <i class="fas fa-hotel me-2"></i>Hotel Management
   </a>
-  <a class="flex-sm-fill text-sm-center nav-link text-white-50 p-3" href="#">
+  <a class="flex-sm-fill text-sm-center nav-link text-white-50 p-3" href="{% url 'roomsList' %}">
     <i class="fas fa-bed me-2"></i>Rooms
   </a>
-  <a class="flex-sm-fill text-sm-center nav-link text-white-50 p-3" href="#">
+  <a class="flex-sm-fill text-sm-center nav-link text-white-50 p-3" href="{% url 'guestList' %}">
     <i class="fas fa-users me-2"></i>Guests
   </a>
   <a class="flex-sm-fill text-sm-center nav-link text-white-50 p-3" href="#">
@@ -30,6 +30,15 @@
 {% block content %}
 
  {% endblock %}
+
+ <!-- Footer -->
+<footer class="bg-dark text-white text-center py-3 mt-5 border-top border-secondary">
+  <div class="container">
+    <small class="text-white-50">
+      © 2026 Hotel Management System. All rights reserved.
+    </small>
+  </div>
+</footer>
 
 </body>
 </html>

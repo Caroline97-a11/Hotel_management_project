@@ -7,11 +7,11 @@
         <p><strong>Category:</strong> {{ room.room_category }}</p>
         <p><strong>Status:</strong> {{ room.room_status }}</p>
     </div>
-    <a href="{% url 'editRoom' room.id %}" class="btn btn-outline-warning btn-sm mt-3">
+    <a href="{% url 'editRoom' room.id %}" class="btn btn-sm btn-warning">
         <i class="bi bi-pencil"></i> Edit
     </a>
 
-    <a href="{% url 'deleteRoom' room.id %}" class="btn btn-outline-danger btn-sm mt-3">
+    <a href="{% url 'deleteRoom' room.id %}" class="btn btn-sm btn-danger">
         <i class="bi bi-trash"></i> Delete
     </a>
 </div>
