@@ -19,8 +19,8 @@ def guestList(request):
     context = {
         'guests': all_guests,
         'total_guests': all_guests.count(),
-        'checked_in': all_guests.filter(guest_status='checked in').count(),
-        'checked_out': all_guests.filter(guest_status='checked out').count(),
+        'checked_in': all_guests.filter(guest_status='checked_in').count(),
+        'checked_out': all_guests.filter(guest_status='checked_out').count(),
     }
     return render(request, 'guestList.html', context)
 

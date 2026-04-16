@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 mb-3">
+  <a class="navbar-brand" href="#">
+    <i class="fas fa-hotel me-2"></i>Hotel Management
+  </a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle {% if 'rooms' in request.path %}active{% endif %}"
+           href="#"
+           role="button"
+           data-bs-toggle="dropdown">
+          <i class="fas fa-bed me-1"></i>Rooms
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark">
+          <li><a class="dropdown-item" href="{% url 'roomsList' %}">All Rooms</a></li>
+          <li><a class="dropdown-item" href="{% url 'createRoom' %}">Add Room</a></li>
+          <li><a class="dropdown-item" href="{% url 'CategoryList' %}">Categories</a></li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle {% if 'guests' in request.path %}active{% endif %}"
+           href="#"
+           role="button"
+           data-bs-toggle="dropdown">
+          <i class="fas fa-users me-1"></i>Guests
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark">
+          <li><a class="dropdown-item" href="{% url 'guestList' %}">All Guests</a></li>
+          <li><a class="dropdown-item" href="{% url 'addGuest' %}">Add Guest</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fas fa-credit-card me-1"></i>Payments</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fas fa-chart-line me-1"></i>Reports</a>
+      </li>
+
+    </ul>
+  </div>
+
+</nav>

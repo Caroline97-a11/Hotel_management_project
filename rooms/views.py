@@ -43,8 +43,8 @@ def roomsList(request):
     context = {
         'rooms': all_rooms,
         'total_rooms': all_rooms.count(),
-        'occupied_rooms': all_rooms.filter(room_status='occupied').count(),
-        'available_rooms': all_rooms.filter(room_status='available').count(),
+        'occupied_rooms': all_rooms.filter(room_status='Not_available').count(),
+        'available_rooms': all_rooms.filter(room_status='Available').count(),
       
     }
 

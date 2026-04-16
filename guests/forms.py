@@ -1,43 +1,88 @@
 from django import forms
 from .models import Guest
-
+import re
 
 class GuestForm(forms.ModelForm):
+
     class Meta:
         model = Guest
         fields = '__all__'
 
+        labels = {
+            'first_name': 'First Name',
+            'last_name': 'Last Name',
+            'phone_number': 'Phone Number',
+            'email': 'Email Address',
+            'date_registered': 'Date of Registration',
+            'guest_status': 'Guest Status',
+            'room_number': 'Room Number',
+        }
+
         widgets = {
+            'first_name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter first name'
+            }),
+
+            'last_name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter last name'
+            }),
+
+            'phone_number': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': '+2567XXXXXXXX'
+            }),
+
+            'email': forms.EmailInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'example@gmail.com'
+            }),
+
             'date_registered': forms.DateInput(attrs={
                 'type': 'date',
                 'class': 'form-control'
-            })
+            }),
+
+            'guest_status': forms.Select(attrs={
+                'class': 'form-control'
+            }),
+
+            'room_number': forms.Select(attrs={
+                'class': 'form-control'
+            }),
         }
 
-        error_messages = {
-            'first_name': {
-                'required': 'Please enter your first name'
-            },
-            'last_name': {
-                'required': 'Please enter your last name'
-            },
-            'phone_number': {
-                'required': 'Please enter a valid phone number'
-            },
-            'email': {
-                'required': 'Please enter a correct email'
-            },
-            'date_registered': {
-                'required': 'Please enter a correct date'
-            },
-            'guest_status': {
-                'required': 'Please enter your status'
-            },
-        }
     def clean_first_name(self):
         first_name = self.cleaned_data['first_name']
 
+        if any(char.isdigit() for char in first_name):
+            raise forms.ValidationError("Name must not contain numbers")
+
         if len(first_name) < 2:
-            raise forms.ValidationError('The name is invalid, please enter a valid name')
+            raise forms.ValidationError("First name is too short")
 
         return first_name
+
+    def clean_last_name(self):
+        last_name = self.cleaned_data['last_name']
+
+        if any(char.isdigit() for char in last_name):
+            raise forms.ValidationError("Name must not contain numbers")
+
+        return last_name
+
+    def clean_phone_number(self):
+        phone = self.cleaned_data['phone_number']
+
+        pattern = r'^\+2567\d{8}$'
+
+        if not re.match(pattern, phone):
+            raise forms.ValidationError(
+                "Phone number must start with +2567 "
+            )
+        if len(phone)>13:
+            raise forms.ValidationError('Phone number should not exceed 13 digits')
+
+        return phone
+        

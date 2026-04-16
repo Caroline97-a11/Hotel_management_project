@@ -9,6 +9,7 @@
         <p><strong>Phone Number:</strong> {{ guests.phone_number }}</p>
         <p><strong>Email Address :</strong> {{ guests.email }}</p>
         <p><strong>Date of Registration:</strong> {{ guests.date_registered }}</p>
+        <p><strong>Room number:</strong> {{ guests.room_number }}</p>
         <p><strong>Guest status:</strong> {{ guests.guest_status }}</p>
     </div>
     <a href="{% url 'editGuest' guests.id %}" class="btn btn-sm btn-warning">Edit</a>

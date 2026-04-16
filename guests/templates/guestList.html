@@ -8,7 +8,7 @@ Guests List
 {% block content %}
 <div class="container-fluid mb-4 px-4">
     <div class="d-flex justify-content-between mb-4">
-        <h3 class=" mb-0">Guest List</h3>
+        <h3 class=" mb-0 ms-5">Guest List</h3>
         <a href="{% url 'addGuest' %}" class="btn btn-secondary"><i class="fas fa-plus me-2"></i>Add
             Guest</a>
     </div>
@@ -75,6 +75,7 @@ Guests List
                 <th>Phone number</th>
                 <th>Email Address</th>
                 <th>Date of Registration</th>
+                <th>Room Number</th>
                 <th>Guest status</th>
                 <th>Action</th>
             </tr>
@@ -88,6 +89,7 @@ Guests List
                 <td>{{ each.phone_number }}</td>
                 <td>{{ each.email }}</td>
                 <td>{{ each.date_registered }}</td>
+                <td>{{ each.room_number }}</td>
 
                 <td>
                     {% if each.guest_status == 'checked in' %}
@@ -102,7 +104,7 @@ Guests List
                 </td>
 
                 <td>
-                    <a href="{% url 'viewGuest' each.id %}" class="btn btn-sm btn-info">View</a>
+                    <a href="{% url 'viewGuest' each.id %}" class="btn btn-sm btn-primary">View</a>
 
                 </td>
             </tr>
