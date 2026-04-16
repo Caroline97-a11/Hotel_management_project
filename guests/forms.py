@@ -55,9 +55,10 @@ class GuestForm(forms.ModelForm):
 
     def clean_first_name(self):
         first_name = self.cleaned_data['first_name']
-
-        if any(char.isdigit() for char in first_name):
-            raise forms.ValidationError("Name must not contain numbers")
+        if not first_name:
+            raise forms.ValidationError('please enter your first name')
+        if not re.match('^[A-Za-z]+$", first_name'):
+            raise forms.ValidationError('The name should contain only alphabets')
 
         if len(first_name) < 2:
             raise forms.ValidationError("First name is too short")
@@ -67,8 +68,8 @@ class GuestForm(forms.ModelForm):
     def clean_last_name(self):
         last_name = self.cleaned_data['last_name']
 
-        if any(char.isdigit() for char in last_name):
-            raise forms.ValidationError("Name must not contain numbers")
+        if not re.match("^[A-Za-z]+$", last_name):
+            raise forms.ValidationError("The name should contain only alphabets")
 
         return last_name
 
@@ -81,7 +82,7 @@ class GuestForm(forms.ModelForm):
             raise forms.ValidationError(
                 "Phone number must start with +2567 "
             )
-        if len(phone)>13:
+        if len(phone)!=13:
             raise forms.ValidationError('Phone number should not exceed 13 digits')
 
         return phone

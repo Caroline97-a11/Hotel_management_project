@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'reports',
     'payments',
     'crispy_forms',
-    'crispy_bootstrap5'
+    'crispy_bootstrap5',
+    'staff',
 ]
 
 MIDDLEWARE = [
@@ -124,4 +125,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS =[BASE_DIR / 'static']
 CRISPY_ALLOWED_TEMPLATE_PACKS='bootstrap5',
 CRISPY_TEMPLATE_PACK ='bootstrap5'
+
+#allowing access to customized login
+AUTH_USER_MODEL ='staff.Staff' # app.name of the model
+
 

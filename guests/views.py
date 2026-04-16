@@ -14,15 +14,18 @@ def addGuest(request):
 
     return render(request, 'add_guest.html', {'form': form})
 
+
 def guestList(request):
     all_guests = Guest.objects.all()
     context = {
         'guests': all_guests,
         'total_guests': all_guests.count(),
-        'checked_in': all_guests.filter(guest_status='checked_in').count(),
-        'checked_out': all_guests.filter(guest_status='checked_out').count(),
+        'checked_in': all_guests.filter(guest_status='checked in').count(),
+        'checked_out': all_guests.filter(guest_status='checked out').count(),
     }
     return render(request, 'guestList.html', context)
+
+
 
 def viewGuest(request, pk):
     guests = get_object_or_404(Guest, id=pk)
@@ -36,7 +39,7 @@ def editGuest(request, pk):
         form = GuestForm(request.POST, instance=guests)
         if form.is_valid():
             form.save()
-            return redirect('guestList')
+            return redirect('viewGuest', pk=guests.id)
     else:
         form = GuestForm(instance=guests)
 
