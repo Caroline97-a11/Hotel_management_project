@@ -53,20 +53,12 @@ class GuestForm(forms.ModelForm):
             }),
         }
 
-    def clean_first_name(self):
-        first_name = self.cleaned_data['first_name']
-        if not first_name:
-            raise forms.ValidationError('please enter your first name')
-        if not re.match('^[A-Za-z]+$", first_name'):
-            raise forms.ValidationError('The name should contain only alphabets')
-
-        if len(first_name) < 2:
-            raise forms.ValidationError("First name is too short")
-
-        return first_name
 
     def clean_last_name(self):
-        last_name = self.cleaned_data['last_name']
+        last_name = self.cleaned_data.get('last_name')
+
+        if not last_name:
+            raise forms.ValidationError('Please enter your last name')
 
         if not re.match("^[A-Za-z]+$", last_name):
             raise forms.ValidationError("The name should contain only alphabets")
@@ -74,16 +66,16 @@ class GuestForm(forms.ModelForm):
         return last_name
 
     def clean_phone_number(self):
-        phone = self.cleaned_data['phone_number']
+            phone = self.cleaned_data['phone_number']
 
-        pattern = r'^\+2567\d{8}$'
+            pattern = r'^\+2567\d{8}$'
 
-        if not re.match(pattern, phone):
-            raise forms.ValidationError(
-                "Phone number must start with +2567 "
-            )
-        if len(phone)!=13:
-            raise forms.ValidationError('Phone number should not exceed 13 digits')
+            if not re.match(pattern, phone):
+                raise forms.ValidationError(
+                    "Phone number must start with +2567 "
+                )
+            if len(phone)!=13:
+                raise forms.ValidationError('Phone number should not exceed 13 digits')
 
-        return phone
-        
+            return phone
+            

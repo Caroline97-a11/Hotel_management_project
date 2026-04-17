@@ -1,9 +1,155 @@
+
 .navbar .nav-link:hover {
-    color:white;
+    color: white;
     font-weight: bold;
 }
 
 .navbar .nav-link.active {
     color: #0d6efd !important;
     font-weight: bold;
+}
+
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6f9;
+}
+
+.dashboard {
+    display: flex;
+}
+
+.dashboard .sidebar {
+    width: 230px;
+    height: 100vh;
+    background: #1e272e;
+    color: #fff;
+    padding: 20px;
+}
+
+.dashboard .logo {
+    margin-bottom: 30px;
+}
+
+.dashboard .sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.dashboard .sidebar ul li {
+    margin: 15px 0;
+}
+
+.dashboard .sidebar a {
+    color: #dcdde1;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.dashboard .sidebar a:hover {
+    color: #00a8ff;
+}
+
+.dashboard .main-content {
+    flex: 1;
+    padding: 25px;
+}
+
+.dashboard .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dashboard .btn-add {
+    background: #0984e3;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+/* Container holding all cards */
+.cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* makes it responsive */
+}
+
+.card {
+    background-color: white !important;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    color: black;
+
+    flex: 1;               
+    min-width: 220px;      
+    transition: 0.3s ease; 
+}
+
+.card h6 {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.card h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.card-total {
+    border-left: 5px solid black;
+}
+
+.card-cash {
+    border-left: 5px solid blue;
+}
+
+.card-momo {
+    border-left: 5px solid green;
+}
+
+.card-card {
+    border-left: 5px solid grey;
+}
+.dashboard .table-container {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.dashboard .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.dashboard .custom-table th {
+    text-align: left;
+    padding: 10px;
+    background: #f1f2f6;
+}
+
+.dashboard .custom-table td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.dashboard .btn-edit {
+    background: #fbc531;
+    padding: 5px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: black;
+    margin-right: 5px;
+}
+
+.dashboard .btn-delete {
+    background: #e84118;
+    padding: 5px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: white;
 }

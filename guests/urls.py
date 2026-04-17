@@ -7,4 +7,5 @@ urlpatterns = [
     path('guests/<int:pk>/', views.viewGuest, name='viewGuest'),
     path('guests/<int:pk>/edit/', views.editGuest, name='editGuest'),
     path('guests/<int:pk>/delete/', views.deleteGuest, name='deleteGuest'),
+    
 ]

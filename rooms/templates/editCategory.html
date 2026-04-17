@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <h3>Edit Room Category</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+
+        <button class="btn btn-success mt-3">Save Changes</button>
+        <a href="{% url 'CategoryList' %}" class="btn btn-secondary mt-3">Cancel</a>
+    </form>
+
+</div>
+{% endblock %}

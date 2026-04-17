@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import RoomType, Room
 from .forms import RoomTypeForm,RoomForm
 
@@ -75,3 +75,28 @@ def deleteRoom(request, id):
         return redirect('roomsList')
 
     return render(request, 'deleteRoom.html', {'room': room})
+
+
+def edit_category(request, id):
+    category = get_object_or_404(RoomType, id=id)
+
+    form = RoomTypeForm(request.POST or None, instance=category)
+
+    if form.is_valid():
+        form.save()
+        return redirect('CategoryList')
+
+    return render(request, 'editCategory.html', {
+        'form': form
+    })
+
+def delete_category(request, id):
+    category = get_object_or_404(RoomType, id=id)
+
+    if request.method == "POST":
+        category.delete()
+        return redirect('CategoryList')
+
+    return render(request, 'deleteCategory.html', {
+        'category': category
+    })
